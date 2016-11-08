@@ -2,7 +2,7 @@
 ```
 popupService.alert("Something cool just happened")
     .ok(() => {
-        //now go do something else, the dialog has been dismissed (by the user by whatever means e.g. esc key or 'OK' click)
+        //now go do something else, the dialog has been dismissed
         console.log("alert dialog closed....");
     });
 ```
@@ -14,7 +14,7 @@ popupService.confirm("Are you sure?")
         console.log("OK clicked");
     })
     .cancel() => {
-        //'cancel' clicked (or dialog dismissed by the user by whatever means e.g. esc key), now do something negative
+        //'cancel' clicked, now do something negative
         console.log("CANCEL clicked");
     });
 ```
@@ -32,8 +32,8 @@ You can run it by navigating to the dist directory in a command terminal and ser
 3. `npm live` - This fires up the webpack-dev-server and serves up the application on http://localhost:8081. It rebuilds and reloads the browser automatically when code changes are detected.
 
 ## Code highlights
-The required ng2-bootstrap modules are included in `app.module`
-`ModalModule` and `AlertModule`
+The required ng2-bootstrap modules are included in `app.module`, i.e.
+`ModalModule` and `AlertModule`.
 But again, these are not essential, you can change the code accordingly, the general principal remains the same.
 Note that the bootstrap CSS is imported in `vendor.ts`, it's compiled as part of build process.
 
@@ -59,4 +59,38 @@ export class AppComponent {
 
 ## Demo
 The `PopupService` is invoked for demo purposes from `home.component`
+```
+import { Component } from '@angular/core';
+import { PopupService } from '../../shared/popups/services/popup.service';
+
+@Component({
+    selector: 'home',
+    template: require('./home.component.html')
+})
+export class HomeComponent {
+    
+    constructor(
+        private popupService: PopupService
+    ) {}
+
+    testAlertPopup(): void {
+        console.log("Opening alert");
+        this.popupService.alert("Yo! something just happened")
+        .ok(() => {
+            console.log("alert closed");
+        });
+    }
+
+    testConfirmPopup(): void {
+        console.log("Opening confirm dialog");
+        this.popupService.confirm("Are you really sure?")
+        .ok(() => {
+            console.log("OK");
+        })
+        .cancel(() => {
+            console.log("CANCEL");
+        });
+    }
+}
+```
 

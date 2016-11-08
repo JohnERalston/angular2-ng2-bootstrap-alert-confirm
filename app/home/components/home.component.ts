@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { PopupService } from '../../shared/popups/services/popup.service';
-import { AlertCallback } from '../../shared/popups/alert-callback';
 
 @Component({
     selector: 'home',
