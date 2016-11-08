@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <title>Simple but effective webpack configuration</title>
+    
+    <script src="polyfills.js?<%= htmlWebpackPlugin.options.cachebust %>"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link href="vendor.css?<%= htmlWebpackPlugin.options.cachebust %>" rel="stylesheet" type="text/css" />
+    <link href="app.css?<%= htmlWebpackPlugin.options.cachebust %>" rel="stylesheet" type="text/css" />
+    <base href="/">
+</head>
+
+<body>
+    <my-app>Loading...</my-app>
+    <script src="vendor.js?<%= htmlWebpackPlugin.options.cachebust %>"></script>
+    <script src="app.js?<%= htmlWebpackPlugin.options.cachebust %>"></script>
+</body>
+</html>
